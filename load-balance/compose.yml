@@ -1,0 +1,26 @@
+---
+services:
+  whoami:
+    image: traefik/whoami
+    command:
+      - --port=2001
+      - --name=iam-one
+    ports:
+      - "2001:2001"
+
+  whoami2:
+    image: traefik/whoami
+    command:
+      - --port=2002
+      - --name=iam-two
+    ports:
+      - "2002:2002"
+  
+  whoami3:
+    image: traefik/whoami
+    command:
+      - --port=2003
+      - --name=iam-three
+    ports:
+      - "2003:2003"
+

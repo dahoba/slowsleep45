@@ -1,0 +1,23 @@
+---
+services:
+  nginx-proxy:
+    image: nginxproxy/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      # - ../fullchain.cer:/etc/nginx/ssl/xip.softsquaregroup.app.crt
+      # - ../xip.softsquaregroup.app.key:/etc/nginx/ssl/xip.softsquaregroup.app.key
+
+  whoami:
+    image: traefik/whoami
+    command:
+      # It tells whoami to start listening on 2001 instead of 80
+      - --port=2001
+      - --name=iamfoo
+    ports:
+      - "2001:2001"
+    environment:
+      - VIRTUAL_HOST=whoami-192-168-1-122.xip.softsquaregroup.app
+      - VIRTUAL_PORT=2001
+  
