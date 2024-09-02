@@ -16,7 +16,7 @@ services:
       - --port=2001
       - --name=iamfoo
     ports:
-      - "2001:2001"
+      - "2001:2001" 
     environment:
       - VIRTUAL_HOST=whoami-192-168-1-122.xip.softsquaregroup.app
       - VIRTUAL_PORT=2001
