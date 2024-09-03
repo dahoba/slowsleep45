@@ -1,0 +1,19 @@
+---
+services:
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "80:80"
+      # - "443:443"
+    volumes:
+      - ./public_html:/usr/share/nginx/html
+      - ./example.conf:/etc/nginx/conf.d/example.conf
+  whoami:
+    image: traefik/whoami
+    command:
+      - --name=iamwebsite
+    # ports:
+    #   - "2001:80"
+    environment:
+      - VIRTUAL_HOST=static-192-168-1-122.xip.softsquaregroup.app
+      - VIRTUAL_PORT=80
